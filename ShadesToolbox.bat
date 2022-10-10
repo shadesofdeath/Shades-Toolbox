@@ -204,7 +204,7 @@ echo                 ║ 11║ Network Optimization                ║ 28║ Pag
 echo                 ║ 12║ CPU Optimization                    ║ 29║ Windows Version Switcher                     ║
 echo                 ║ 13║ Mouse/Keyboard Optimization         ║ 30║ Enable Old Alt+Tab Menu                      ║
 echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║═══════════════════Other═════════════════║═══║══════════════Only Windows 11═════════════════║
+echo                 ║═══════════════════Other═════════════════║═══║═════════════Windows 11 Tweaks════════════════║
 echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
 echo                 ║ 14║ Disable SmartScreen                 ║ 31║ Disable Widgets                              ║
 echo                 ║ 15║ Run Disk Defrag                     ║ 32║ Enable Old Context Menu                      ║

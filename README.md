@@ -59,6 +59,18 @@ This app works on both Windows 10 and 11. The other has not been tested on opera
 - Add Context Menu Take Ownership
 - Shades Windows Activator
 - Paging File (Virtual Memory)
+#### Windows 11 Tweaks
+- Disable SmartScreen
+- Run Disk Defrag
+- Disable Windows Update
+- Disable Telemetry Services
+- Enable Old Volume Bar
+- Enable Legacy Boot Menu
+- Run CompactOS
+- Add Context Menu Take Ownership
+- Shades Windows Activator
+- Paging File (Virtual Memory)
+
 #### Downloads
 - Allows you to install one of the applications from the list.
 
