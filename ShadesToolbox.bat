@@ -3,6 +3,9 @@ set version=2.0
 title Shades Toolbox - %version% 
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 SET webhook=
+cd /d "%~dp0"
+for /f %%a in ('"cd"') do set Location=%%a
+set NSudo="%Location%\Files\NSudo.exe" -U:T -P:E -Wait -ShowWindowMode:hide cmd /c
 :loading
 chcp 65001 >nul
 cls
@@ -267,8 +270,7 @@ goto TweaksMenu
 :8.1StyleWifiMenu
 chcp 437 > NUL 2>&1
 chcp 65001 >nul
-::set NSudo="%Location%\Files\NSudo.exe" -U:T -P:E -Wait -ShowWindowMode:hide cmd /c
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Settings\Network" /v "ReplaceVan" /t REG_DWORD /d 2 /f
+%NSudo% reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Settings\Network" /v "ReplaceVan" /t REG_DWORD /d 2 /f
 echo Succesfully..
 timeout /t 2 >nul
 goto TweaksMenu
@@ -291,6 +293,8 @@ Reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}"
 Reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f
 echo Succesfully..
 timeout /t 2 >nul
+taskkill /im explorer.exe /f
+start explorer
 goto TweaksMenu
 
 :disablewidget
