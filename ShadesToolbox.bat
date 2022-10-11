@@ -216,8 +216,8 @@ echo                 ║ 17║ Disable Telemetry Services          ║ 34║ Fil
 echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
 echo                 ║═══════════════════Other═════════════════║═══║═════════════Windows 11 Tweaks════════════════║
 echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 35║ Windows 8.1 Style Wifi Menu         ║ 39║ Soon                                         ║
-echo                 ║ 36║ Soon                                ║ 40║ Soon                                         ║
+echo                 ║ 35║ 8.1 Style Wifi Menu(Only Win10)     ║ 39║ Soon                                         ║
+echo                 ║ 36║ Add Personalize (Old) ContextMenu   ║ 40║ Soon                                         ║
 echo                 ║ 37║ Soon                                ║ 41║ Soon                                         ║
 echo                 ║ 38║ Soon                                ║ 42║ Soon                                         ║
 echo                 ╚═══╩═════════════════════════════════════╩═══╩══════════════════════════════════════════════╝
@@ -261,11 +261,58 @@ if %M%==32 goto oldcontext
 if %M%==33 goto DisableBackgroundApps
 if %M%==34 goto FileExplorerClassicRibbon
 if %M%==35 goto 8.1StyleWifiMenu
+if %M%==36 goto oldPersonalize
 if %M%==M goto menu
+if %M%==m goto menu
 if %M%==L goto Finish
+if %M%==l goto Finish
 pause >nul
 goto TweaksMenu
 
+
+:oldPersonalize
+chcp 437 > NUL 2>&1
+chcp 65001 >nul
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "Icon" /t REG_SZ /d "themecpl.dll" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "MUIVerb" /t REG_SZ /d "Personalize (classic)" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "Position" /t REG_SZ /d "Bottom" /f
+Reg.exe delete "HKCR\DesktopBackground\Shell\Personalization" /v "Extended" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "SubCommands" /t REG_SZ /d "" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\001flyout" /v "MUIVerb" /t REG_SZ /d "Theme Settings" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\001flyout" /v "ControlPanelName" /t REG_SZ /d "Microsoft.Personalization" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\001flyout" /v "Icon" /t REG_SZ /d "themecpl.dll" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\001flyout\command" /ve /t REG_SZ /d "explorer shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\002flyout" /v "Icon" /t REG_SZ /d "imageres.dll,-110" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\002flyout" /v "MUIVerb" /t REG_SZ /d "Desktop Background" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\002flyout" /v "CommandFlags" /t REG_DWORD /d "32" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\002flyout\command" /ve /t REG_SZ /d "explorer shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921} -Microsoft.Personalization\pageWallpaper" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\003flyout" /v "Icon" /t REG_SZ /d "themecpl.dll" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\003flyout" /v "MUIVerb" /t REG_SZ /d "Color and Appearance" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\003flyout\command" /ve /t REG_SZ /d "explorer shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921} -Microsoft.Personalization\pageColorization" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\004flyout" /v "Icon" /t REG_SZ /d "SndVol.exe,-101" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\004flyout" /v "MUIVerb" /t REG_SZ /d "Sounds" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\004flyout\command" /ve /t REG_SZ /d "rundll32.exe shell32.dll,Control_RunDLL mmsys.cpl,,2" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\005flyout" /v "Icon" /t REG_SZ /d "PhotoScreensaver.scr" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\005flyout" /v "MUIVerb" /t REG_SZ /d "Screen Saver Settings" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\005flyout\command" /ve /t REG_SZ /d "rundll32.exe shell32.dll,Control_RunDLL desk.cpl,,1" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\006flyout" /v "Icon" /t REG_SZ /d "desk.cpl" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\006flyout" /v "MUIVerb" /t REG_SZ /d "Desktop Icon Settings" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\006flyout" /v "CommandFlags" /t REG_DWORD /d "32" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\006flyout\command" /ve /t REG_SZ /d "rundll32.exe shell32.dll,Control_RunDLL desk.cpl,,0" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\007flyout" /v "Icon" /t REG_SZ /d "main.cpl" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\007flyout" /v "MUIVerb" /t REG_SZ /d "Mouse Pointers" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\007flyout\command" /ve /t REG_SZ /d "rundll32.exe shell32.dll,Control_RunDLL main.cpl,,1" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\008flyout" /v "Icon" /t REG_SZ /d "taskbarcpl.dll,-1" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\008flyout" /v "MUIVerb" /t REG_SZ /d "Notification Area Icons" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\008flyout" /v "CommandFlags" /t REG_DWORD /d "32" /f
+Reg.exe add "HKCR\DesktopBackground\Shell\Personalization\shell\008flyout\command" /ve /t REG_SZ /d "explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}" /f
+echo Explorer.exe Resarting.. Please Wait..
+timeout /t 2 >nul
+echo Succesfully..
+timeout /t 2 >nul
+taskkill /im explorer.exe /f
+start explorer
+goto TweaksMenu
 
 :8.1StyleWifiMenu
 chcp 437 > NUL 2>&1
@@ -523,15 +570,14 @@ goto final
 slmgr /skms s8.uk.to
 slmgr /ato
 echo Your Windows activated succesfully!
-timeout /t 2 >nulss
 echo Please Wait..
+timeout /t 2 >nulss
 goto TweaksMenu
 
 
 :takeownership
 chcp 437 > NUL 2>&1
 chcp 65001 >nul
-cls
 Reg add "HKCR\*\shell\runas" /ve /t REG_SZ /d "Take Ownership" /f
 Reg add "HKCR\*\shell\runas" /v "NoWorkingDirectory" /t REG_SZ /d "" /f
 Reg add "HKCR\*\shell\runas\command" /ve /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f
@@ -540,7 +586,7 @@ Reg add "HKCR\Directory\shell\runas" /ve /t REG_SZ /d "Take Ownership" /f
 Reg add "HKCR\Directory\shell\runas" /v "NoWorkingDirectory" /t REG_SZ /d "" /f
 Reg add "HKCR\Directory\shell\runas\command" /ve /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" /r /d y && icacls \"%%1\" /grant administrators:F /t" /f
 Reg add "HKCR\Directory\shell\runas\command" /v "IsolatedCommand" /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" /r /d y && icacls \"%%1\" /grant administrators:F /t" /f
-cls
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :compactos
@@ -580,17 +626,6 @@ goto TweaksMenu
 :OldPhotoViewer
 chcp 437 >null
 chcp 65001 >nul
-@echo off
-
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" /v ".bmp" /t REG_SZ /d "PhotoViewer.FileAssoc.Tiff" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" /v ".dib" /t REG_SZ /d "PhotoViewer.FileAssoc.Tiff" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" /v ".gif" /t REG_SZ /d "PhotoViewer.FileAssoc.Tiff" /f
@@ -610,6 +645,7 @@ Reg.exe add "HKCR\Applications\photoviewer.dll\shell\open\command" /ve /t REG_EX
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\open\DropTarget" /v "Clsid" /t REG_SZ /d "{FFE2A43C-56B9-4bf5-9A79-CC6D4285608A}" /f
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\print\command" /ve /t REG_EXPAND_SZ /d "%%SystemRoot%%\System32\rundll32.exe \"%%ProgramFiles%%\Windows Photo Viewer\PhotoViewer.dll\", ImageView_Fullscreen %%1" /f
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\print\DropTarget" /v "Clsid" /t REG_SZ /d "{60fd46de-f830-4894-a628-6fa81bc0190d}" /f
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :DisableWindowsFeatures
@@ -619,17 +655,6 @@ echo %g%_____________________________________________
 echo.
 echo      Clear previous Windows installations  
 echo %g%_____________________________________________
-@echo off
-
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
 echo --- Direct Play feature
 dism /Online /Disable-Feature /FeatureName:"DirectPlay" /NoRestart
 echo --- Internet Explorer feature
@@ -680,20 +705,12 @@ echo --- XPS Services feature
 dism /Online /Disable-Feature /FeatureName:"Printing-XPSServices-Features" /NoRestart
 echo --- XPS Viewer feature
 dism /Online /Disable-Feature /FeatureName:"Xps-Foundation-Xps-Viewer" /NoRestart
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :ClearpreviousWindowsinstallations
 chcp 437 >null
 chcp 65001 >nul
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
 echo --- Clear previous Windows installations
 if exist "%SystemDrive%\Windows.old" (
     takeown /f "%SystemDrive%\Windows.old" /a /r /d y
@@ -703,20 +720,12 @@ if exist "%SystemDrive%\Windows.old" (
 )  else (
     echo No previous Windows installation has been found
 )
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :UnninstallSystemApps
 chcp 437 >null
 chcp 65001 >nul
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
 echo --- File Picker app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers '1527c705-839a-4832-9118-54d4Bd6a0c89'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
 echo --- File Explorer app
@@ -773,75 +782,25 @@ echo --- OOBE Network Captive Port app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.OOBENetworkCaptivePortal'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
 echo --- OOBE Network Connection Flow app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.OOBENetworkConnectionFlow'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: -----Windows 10 Family Safety / Parental Controls app-----
-
 echo --- Windows 10 Family Safety / Parental Controls app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.ParentalControls'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-:: My People / People Bar App on taskbar (People Experience Host)
 echo --- My People / People Bar App on taskbar (People Experience Host)
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.PeopleExperienceHost'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: -------------Pinning Confirmation Dialog app--------------
-
 echo --- Pinning Confirmation Dialog app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.PinningConfirmationDialog'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: ---------Windows Security GUI (Sec Health UI) app---------
-
 echo --- Windows Security GUI (Sec Health UI) app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.SecHealthUI'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: --------------Secondary Tile Experience app---------------
-
 echo --- Secondary Tile Experience app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.SecondaryTileExperience'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-:: Secure Assessment Browser app (breaks Microsoft Intune/Graph)
 echo --- Secure Assessment Browser app (breaks Microsoft Intune/Graph)
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.Windows.SecureAssessmentBrowser'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: -------------------Windows Feedback app-------------------
-
 echo --- Windows Feedback app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.WindowsFeedback'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: ----Xbox Game Callable UI app (breaks Xbox Live games)----
-
 echo --- Xbox Game Callable UI app (breaks Xbox Live games)
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.XboxGameCallableUI'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
-
-
-
-:: ---------------------CBS Preview app----------------------
-
 echo --- CBS Preview app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Windows.CBSPreview'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-
+timeout /t 2 >nulss
 goto TweaksMenuak
 
 :UninstallinstalledWindowsapps
@@ -851,136 +810,39 @@ echo %g%_____________________________________________
 echo.
 echo      Uninstall installed Windows apps  
 echo %g%_____________________________________________
-@echo off
-:: https://privacy.sexy — v0.11.4 — Sun, 09 Oct 2022 17:50:47 GMT
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
-:: ----------------Microsoft Advertising app-----------------
 
 echo --- Microsoft Advertising app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Advertising.Xaml' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Remote Desktop app--------------------
-
 echo --- Remote Desktop app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.RemoteDesktop' | Remove-AppxPackage"
-
-
-
-
-:: ------------------Network Speed Test app------------------
-
 echo --- Network Speed Test app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.NetworkSpeedTest' | Remove-AppxPackage"
-
-
-
-
-:: -------------------Microsoft To Do app--------------------
-
 echo --- Microsoft To Do app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Todos' | Remove-AppxPackage"
-
-
-
-
-:: ------------------------Shazam app------------------------
-
 echo --- Shazam app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'ShazamEntertainmentLtd.Shazam' | Remove-AppxPackage"
-
-
-
-
-:: -------------------Candy Crush Saga app-------------------
-
 echo --- Candy Crush Saga app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'king.com.CandyCrushSaga' | Remove-AppxPackage"
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'king.com.CandyCrushSodaSaga' | Remove-AppxPackage"
-
-
-
-
-:: ----------------------Flipboard app-----------------------
-
 echo --- Flipboard app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Flipboard.Flipboard' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Twitter app------------------------
-
 echo --- Twitter app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage '9E2F88E3.Twitter' | Remove-AppxPackage"
-
-
-
-
-:: ---------------------iHeartRadio app----------------------
-
 echo --- iHeartRadio app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'ClearChannelRadioDigital.iHeartRadio' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Duolingo app-----------------------
-
 echo --- Duolingo app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'D5EA27B7.Duolingo-LearnLanguagesforFree' | Remove-AppxPackage"
-
-
-
-
-:: ------------------Photoshop Express app-------------------
-
 echo --- Photoshop Express app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'AdobeSystemIncorporated.AdobePhotoshop' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Pandora app------------------------
-
 echo --- Pandora app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'PandoraMediaInc.29680B314EFC2' | Remove-AppxPackage"
-
-
-
-
-:: -------------------Eclipse Manager app--------------------
-
 echo --- Eclipse Manager app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage '46928bounde.EclipseManager' | Remove-AppxPackage"
-
-
-
-
-:: ---------------------Code Writer app----------------------
-
 echo --- Code Writer app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'ActiproSoftwareLLC.562882FEEB491' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Spotify app------------------------
-
 echo --- Spotify app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'SpotifyAB.SpotifyMusic' | Remove-AppxPackage"
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 
@@ -991,15 +853,6 @@ echo %g%_____________________________________________
 echo.
 echo     Uninstall provisioned Windows apps  
 echo %g%_____________________________________________
-@echo off
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
 echo --- App Connector app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Appconnector' | Remove-AppxPackage"
 echo --- Uninstall Cortana app
@@ -1105,7 +958,7 @@ echo --- Communications - Phone app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.CommsPhone' | Remove-AppxPackage"
 echo --- Your Phone app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.YourPhone' | Remove-AppxPackage"
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :DisableTelemetry
@@ -1115,36 +968,20 @@ echo %g%____________________________________
 echo.
 echo     Disable Windows Telemerty  
 echo %g%____________________________________
-@echo off
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
 echo --- Disable Customer Experience Improvement (CEIP/SQM)
 reg add "HKLM\Software\Policies\Microsoft\SQMClient\Windows" /v "CEIPEnable" /t REG_DWORD /d "0" /f
-
-
 echo --- Disable Application Impact Telemetry (AIT)
 reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AITEnable" /t REG_DWORD /d "0" /f
-
 echo --- Disable Customer Experience Improvement Program
 schtasks /change /TN "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /DISABLE
 schtasks /change /TN "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" /DISABLE
 schtasks /change /TN "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /DISABLE
-
 echo --- Disable telemetry in data collection policy
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /d 0 /t REG_DWORD /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "LimitEnhancedDiagnosticDataWindowsAnalytics" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f 
-
 echo --- Disable license telemetry
 reg add "HKLM\Software\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /v "NoGenTicket" /t "REG_DWORD" /d "1" /f
 echo --- Disable error reporting
@@ -1160,22 +997,16 @@ PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'wersvc'; Writ
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'wercplsupport'; Write-Host "^""Disabling service: `"^""$serviceName`"^""."^""; <# -- 1. Skip if service does not exist #>; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if(!$service) {; Write-Host "^""Service `"^""$serviceName`"^"" could not be not found, no need to disable it."^""; Exit 0; }; <# -- 2. Stop if running #>; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""`"^""$serviceName`"^"" is running, stopping it."^""; try {; Stop-Service -Name "^""$serviceName"^"" -Force -ErrorAction Stop; Write-Host "^""Stopped `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Warning "^""Could not stop `"^""$serviceName`"^"", it will be stopped after reboot: $_"^""; }; } else {; Write-Host "^""`"^""$serviceName`"^"" is not running, no need to stop."^""; }; <# -- 3. Skip if already disabled #>; $startupType = $service.StartType <# Does not work before .NET 4.6.1 #>; if(!$startupType) {; $startupType = (Get-WmiObject -Query "^""Select StartMode From Win32_Service Where Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; if(!$startupType) {; $startupType = (Get-WmiObject -Class Win32_Service -Property StartMode -Filter "^""Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; }; }; if($startupType -eq 'Disabled') {; Write-Host "^""$serviceName is already disabled, no further action is needed"^""; }; <# -- 4. Disable service #>; try {; Set-Service -Name "^""$serviceName"^"" -StartupType Disabled -Confirm:$false -ErrorAction Stop; Write-Host "^""Disabled `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Error "^""Could not disable `"^""$serviceName`"^"": $_"^""; }"
 echo --- Disable connected user experiences and telemetry service
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'DiagTrack'; Write-Host "^""Disabling service: `"^""$serviceName`"^""."^""; <# -- 1. Skip if service does not exist #>; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if(!$service) {; Write-Host "^""Service `"^""$serviceName`"^"" could not be not found, no need to disable it."^""; Exit 0; }; <# -- 2. Stop if running #>; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""`"^""$serviceName`"^"" is running, stopping it."^""; try {; Stop-Service -Name "^""$serviceName"^"" -Force -ErrorAction Stop; Write-Host "^""Stopped `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Warning "^""Could not stop `"^""$serviceName`"^"", it will be stopped after reboot: $_"^""; }; } else {; Write-Host "^""`"^""$serviceName`"^"" is not running, no need to stop."^""; }; <# -- 3. Skip if already disabled #>; $startupType = $service.StartType <# Does not work before .NET 4.6.1 #>; if(!$startupType) {; $startupType = (Get-WmiObject -Query "^""Select StartMode From Win32_Service Where Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; if(!$startupType) {; $startupType = (Get-WmiObject -Class Win32_Service -Property StartMode -Filter "^""Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; }; }; if($startupType -eq 'Disabled') {; Write-Host "^""$serviceName is already disabled, no further action is needed"^""; }; <# -- 4. Disable service #>; try {; Set-Service -Name "^""$serviceName"^"" -StartupType Disabled -Confirm:$false -ErrorAction Stop; Write-Host "^""Disabled `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Error "^""Could not disable `"^""$serviceName`"^"": $_"^""; }"
-
 echo --- Disable WAP push message routing service
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'dmwappushservice'; Write-Host "^""Disabling service: `"^""$serviceName`"^""."^""; <# -- 1. Skip if service does not exist #>; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if(!$service) {; Write-Host "^""Service `"^""$serviceName`"^"" could not be not found, no need to disable it."^""; Exit 0; }; <# -- 2. Stop if running #>; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""`"^""$serviceName`"^"" is running, stopping it."^""; try {; Stop-Service -Name "^""$serviceName"^"" -Force -ErrorAction Stop; Write-Host "^""Stopped `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Warning "^""Could not stop `"^""$serviceName`"^"", it will be stopped after reboot: $_"^""; }; } else {; Write-Host "^""`"^""$serviceName`"^"" is not running, no need to stop."^""; }; <# -- 3. Skip if already disabled #>; $startupType = $service.StartType <# Does not work before .NET 4.6.1 #>; if(!$startupType) {; $startupType = (Get-WmiObject -Query "^""Select StartMode From Win32_Service Where Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; if(!$startupType) {; $startupType = (Get-WmiObject -Class Win32_Service -Property StartMode -Filter "^""Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; }; }; if($startupType -eq 'Disabled') {; Write-Host "^""$serviceName is already disabled, no further action is needed"^""; }; <# -- 4. Disable service #>; try {; Set-Service -Name "^""$serviceName"^"" -StartupType Disabled -Confirm:$false -ErrorAction Stop; Write-Host "^""Disabled `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Error "^""Could not disable `"^""$serviceName`"^"": $_"^""; }"
-
 echo --- Disable diagnostics hub standard collector service
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'diagnosticshub.standardcollector.service'; Write-Host "^""Disabling service: `"^""$serviceName`"^""."^""; <# -- 1. Skip if service does not exist #>; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if(!$service) {; Write-Host "^""Service `"^""$serviceName`"^"" could not be not found, no need to disable it."^""; Exit 0; }; <# -- 2. Stop if running #>; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""`"^""$serviceName`"^"" is running, stopping it."^""; try {; Stop-Service -Name "^""$serviceName"^"" -Force -ErrorAction Stop; Write-Host "^""Stopped `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Warning "^""Could not stop `"^""$serviceName`"^"", it will be stopped after reboot: $_"^""; }; } else {; Write-Host "^""`"^""$serviceName`"^"" is not running, no need to stop."^""; }; <# -- 3. Skip if already disabled #>; $startupType = $service.StartType <# Does not work before .NET 4.6.1 #>; if(!$startupType) {; $startupType = (Get-WmiObject -Query "^""Select StartMode From Win32_Service Where Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; if(!$startupType) {; $startupType = (Get-WmiObject -Class Win32_Service -Property StartMode -Filter "^""Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; }; }; if($startupType -eq 'Disabled') {; Write-Host "^""$serviceName is already disabled, no further action is needed"^""; }; <# -- 4. Disable service #>; try {; Set-Service -Name "^""$serviceName"^"" -StartupType Disabled -Confirm:$false -ErrorAction Stop; Write-Host "^""Disabled `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Error "^""Could not disable `"^""$serviceName`"^"": $_"^""; }"
-
 echo --- Disable diagnostic execution service
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'diagsvc'; Write-Host "^""Disabling service: `"^""$serviceName`"^""."^""; <# -- 1. Skip if service does not exist #>; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if(!$service) {; Write-Host "^""Service `"^""$serviceName`"^"" could not be not found, no need to disable it."^""; Exit 0; }; <# -- 2. Stop if running #>; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""`"^""$serviceName`"^"" is running, stopping it."^""; try {; Stop-Service -Name "^""$serviceName"^"" -Force -ErrorAction Stop; Write-Host "^""Stopped `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Warning "^""Could not stop `"^""$serviceName`"^"", it will be stopped after reboot: $_"^""; }; } else {; Write-Host "^""`"^""$serviceName`"^"" is not running, no need to stop."^""; }; <# -- 3. Skip if already disabled #>; $startupType = $service.StartType <# Does not work before .NET 4.6.1 #>; if(!$startupType) {; $startupType = (Get-WmiObject -Query "^""Select StartMode From Win32_Service Where Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; if(!$startupType) {; $startupType = (Get-WmiObject -Class Win32_Service -Property StartMode -Filter "^""Name='$serviceName'"^"" -ErrorAction Ignore).StartMode; }; }; if($startupType -eq 'Disabled') {; Write-Host "^""$serviceName is already disabled, no further action is needed"^""; }; <# -- 4. Disable service #>; try {; Set-Service -Name "^""$serviceName"^"" -StartupType Disabled -Confirm:$false -ErrorAction Stop; Write-Host "^""Disabled `"^""$serviceName`"^"" successfully."^""; } catch {; Write-Error "^""Could not disable `"^""$serviceName`"^"": $_"^""; }"
-
 echo --- Disable devicecensus.exe (telemetry) task
 schtasks /change /TN "Microsoft\Windows\Device Information\Device" /disable
-
 echo --- Disable devicecensus.exe (telemetry) process
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\'DeviceCensus.exe'" /v "Debugger" /t REG_SZ /d "%windir%\System32\taskkill.exe" /f
-
 echo --- Disable sending information to Customer Experience Improvement Program
 schtasks /change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /disable
 echo --- Disable Application Impact Telemetry Agent task
@@ -1184,10 +1015,9 @@ echo --- Disable "Disable apps to improve performance" reminder
 schtasks /change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /disable
 echo --- Disable Microsoft Compatibility Appraiser task
 schtasks /change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /disable
-
 echo --- Disable CompatTelRunner.exe (Microsoft Compatibility Appraiser) process
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\'CompatTelRunner.exe'" /v "Debugger" /t REG_SZ /d "%windir%\System32\taskkill.exe" /f
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 
@@ -1200,7 +1030,6 @@ echo      Disable Windows Updates
 echo %g%____________________________________
 if not "%1"=="admin" (powershell start -verb runas '%0' admin & exit /b)
 if not "%2"=="system" (powershell %~dp0\PsExec.exe /accepteula -i -s -d '%0' admin system & exit /b)
-
 net stop wuauserv
 net stop UsoSvc
 net stop uhssvc
@@ -1211,7 +1040,6 @@ sc config UsoSvc start= disabled
 sc failure UsoSvc reset= 0 actions= ""
 sc config uhssvc start= disabled
 sc failure uhssvc reset= 0 actions= ""
-
 takeown /f C:\Windows\System32\WaaSMedicSvc.dll && icacls C:\Windows\System32\WaaSMedicSvc.dll /grant *S-1-1-0:F /t /c /l /q
 rename C:\Windows\System32\WaaSMedicSvc.dll WaaSMedicSvc_BAK.dll
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v Start /t REG_DWORD /d 4 /f
@@ -1219,8 +1047,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions 
 reg add "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 erase /f /s /q c:\windows\softwaredistribution\*.* && rmdir /s /q c:\windows\softwaredistribution
 powershell -command "Get-ScheduledTask -TaskPath '\Microsoft\Windows\UpdateOrchestrator\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\UpdateAssistant\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\WaaSMedic\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\WindowsUpdate\' | Disable-ScheduledTask"
-
-echo Finished
+timeout /t 2 >nulss
+echo Succesfully..
 goto TweaksMenu
 
 :SmartScreen
@@ -1231,33 +1059,15 @@ echo.
 echo     Disable SmartScreen   
 echo %g%_________________________________
 timeout /t 3 >nul
-@echo off
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
-
 echo --- Disable SmartScreen for apps and files
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /d "0" /f
-
-
 echo --- Disable SmartScreen in file explorer
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f
 reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f
-
 echo --- Disable SmartScreen preventing users from running applications
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "ShellSmartScreenLevel" /t REG_SZ /d "Warn" /f
-
 echo --- Prevent Chromium Edge SmartScreen from blocking potentially unwanted apps
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v "SmartScreenPuaEnabled" /t REG_DWORD /d "0" /f
-
-
 echo --- Disable SmartScreen in Edge
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" /v "EnabledV9" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" /v "PreventOverride" /t REG_DWORD /d "0" /f
@@ -1266,31 +1076,15 @@ reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Current
 :: For Microsoft Edge version 77 or later
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v "SmartScreenEnabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v "PreventSmartScreenPromptOverride" /t REG_DWORD /d "0" /f
-
-
-
-
-:: ---------Disable SmartScreen in Internet Explorer---------
-
 echo --- Disable SmartScreen in Internet Explorer
 reg add "HKLM\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" /v "2301" /t REG_DWORD /d "1" /f
-
-
-
-
-:: -----Turn off SmartScreen App Install Control feature-----
-
 echo --- Turn off SmartScreen App Install Control feature
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControl" /t REG_SZ /d "Anywhere" /f
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen" /v "ConfigureAppInstallControlEnabled" /t "REG_DWORD" /d "0" /f
-
-
-
-:: Turn off SmartScreen to check web content (URLs) that apps use
 echo --- Turn off SmartScreen to check web content (URLs) that apps use
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 
@@ -1301,8 +1095,6 @@ echo %g%___________________________________
 echo.
 echo       Mouse/Keyboard Tweaks    
 echo %g%___________________________________
-timeout /t 3 >nul
-cls
 Reg.exe add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "AutoRepeatDelay" /t REG_SZ /d "200" /f
 Reg.exe add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "AutoRepeatRate" /t REG_SZ /d "6" /f
 Reg.exe add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "BounceTime" /t REG_SZ /d "0" /f
@@ -1319,16 +1111,15 @@ Reg.exe add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /t REG_
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d "0" /f
 Reg.exe add "HKCU\Control Panel\Keyboard" /v "KeyboardSpeed" /t REG_SZ /d "31" /f
 Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseXCurve" /t REG_BINARY /d "0000000000000000156e000000000000004001000000000029dc0300000000000000280000000000" /f >nul 2>&1
-	Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseYCurve" /t REG_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f >nul 2>&1
+Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseYCurve" /t REG_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f >nul 2>&1
 Reg add "HKEY_USERS\.DEFAULT\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d "0" /f >nul 2>&1
 Reg add "HKEY_USERS\.DEFAULT\Control Panel\Mouse" /v "MouseThreshold1" /t REG_SZ /d "0" /f >nul 2>&1
 Reg add "HKEY_USERS\.DEFAULT\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ /d "0" /f >nul 2>&1
 Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "MouseSensitivity" /t REG_SZ /d "10" /f >nul 2>&1
 Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseYCurve" /t REG_BINARY /d 
 Reg.exe add "HKU\.DEFAULT\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "100" /f
-echo.
+timeout /t 2 >nulss
 goto TweaksMenu
-
 
 :CO
 chcp 437 >null
@@ -1337,8 +1128,6 @@ echo %g%_____________________________________
 echo.
 echo            GPU Optimizations     
 echo %g%_____________________________________
-timeout /t 3 >nul
-cls
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c" /v "ValueMax" /t REG_DWORD /d "100" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c\DefaultPowerSchemeValues\8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" /v "ValueMax" /t REG_DWORD /d "100" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
@@ -1347,7 +1136,7 @@ Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-echo.
+timeout /t 2 >nulss
 goto TweaksMenu
 
 
@@ -1358,8 +1147,6 @@ echo %g%_____________________________________
 echo.
 echo            Network Tweaks             
 echo %g%_____________________________________
-timeout /t 3 >nul
-cls
 netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
 netsh int tcp set heuristics disabled 
 netsh int tcp set supp internet congestionprovider=ctcp
@@ -1389,7 +1176,6 @@ netsh interface ipv4 set subinterface "Wi-Fi" mtu=1500 store=persistent
 netsh interface ipv6 set subinterface "Ethernet" mtu=1500 store=persistent
 netsh interface ipv6 set subinterface "Ethernet" mtu=1500 store=persistent
 netsh interface ipv4 set subinterface "Wi-Fi" mtu=1500 store=persistent
-
 for /f %%r in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" /f "1" /d /s^|Findstr HKEY_') do (
 Reg add %%r /v "NonBestEffortLimit" /t Reg_DWORD /d "0" /f 
 Reg add %%r /v "DeadGWDetectDefault" /t Reg_DWORD /d "1" /f 
@@ -1401,7 +1187,6 @@ Reg add %%r /v "TcpDelAckTicks" /t Reg_DWORD /d "0" /f
 Reg add %%r /v "MTU" /t Reg_DWORD /d "1500" /f
 Reg add %%r /v "UseZeroBroadcast" /t Reg_DWORD /d "0" /f
 )
-
 for /f %%a in ('Reg query HKLM /v "*WakeOnMagicPacket" /s ^| findstr  "HKEY"') do (
 for /f %%i in ('Reg query "%%a" /v "*EEE" ^| findstr "HKEY"') do (Reg add "%%i" /v "*EEE" /t Reg_DWORD /d "0" /f)
 for /f %%i in ('Reg query "%%a" /v "*FlowControl" ^| findstr "HKEY"') do (Reg add "%%i" /v "*FlowControl" /t Reg_DWORD /d "0" /f)
@@ -1441,6 +1226,7 @@ for /f %%i in ('Reg query "%%a" /v "PowerSavingMode" ^| findstr "HKEY"') do (Reg
 for /f %%i in ('Reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (Reg add "%%i" /v "S5WakeOnLan" /t Reg_SZ /d "0" /f)
 for /f %%i in ('Reg query "%%a" /v "AutoDisableGigabit" ^| findstr "HKEY"') do (Reg add "%%i" /v "AutoDisableGigabit" /t Reg_SZ /d "0" /f)
 )
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :J
@@ -1453,8 +1239,6 @@ echo %g%_____________________________________
 echo.
 echo          Memory Optimizer       
 echo %g%_____________________________________
-timeout /t 3 >nul
-cls
 sc stop BITS
 for /f "tokens=3" %%a in ('sc queryex "BITS" ^| findstr "PID"') do (set pid=%%a)
 wmic process where ProcessId=%pid% CALL setpriority "low"
@@ -1503,7 +1287,7 @@ wmic process where ProcessId=%pid% CALL setpriority "realtime"
 sc start vds
 for /f "tokens=3" %%a in ('sc queryex "vds" ^| findstr "PID"') do (set pid=%%a)
 wmic process where ProcessId=%pid% CALL setpriority "realtime"
-echo.
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :A
@@ -1516,50 +1300,13 @@ echo %g%_____________________________________________
 echo.
 echo       Clear Windows logs / caches         
 echo %g%_____________________________________________
-timeout /t 3 >nul
 @echo off
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
-@echo off
-:: https://privacy.sexy — v0.11.4 — Sun, 09 Oct 2022 15:09:17 GMT
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
-
-
-:: ------------------Clear thumbnail cache-------------------
-
 echo --- Clear thumbnail cache
 del /f /s /q /a %LocalAppData%\Microsoft\Windows\Explorer\*.db
-
-
-
-
-:: -----------------Clear Windows temp files-----------------
-
 echo --- Clear Windows temp files
 del /f /q %localappdata%\Temp\*
 rd /s /q "%WINDIR%\Temp"
 rd /s /q "%TEMP%"
-
-
-
-
-:: ----------------Clear main telemetry file-----------------
 
 echo --- Clear main telemetry file
 if exist "%ProgramData%\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" (
@@ -1571,64 +1318,28 @@ if exist "%ProgramData%\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtr
     echo "Main telemetry file does not exist. Good!"
 )
 
-
-
-
-:: -------------Clear Event Logs in Event Viewer-------------
-
 echo --- Clear Event Logs in Event Viewer
-REM https://social.technet.microsoft.com/Forums/en-US/f6788f7d-7d04-41f1-a64e-3af9f700e4bd/failed-to-clear-log-microsoftwindowsliveidoperational-access-is-denied?forum=win10itprogeneral
 wevtutil sl Microsoft-Windows-LiveId/Operational /ca:O:BAG:SYD:(A;;0x1;;;SY)(A;;0x5;;;BA)(A;;0x1;;;LA)
 for /f "tokens=*" %%i in ('wevtutil.exe el') DO (
     echo Deleting event log: "%%i"
     wevtutil.exe cl %1 "%%i"
 )
 
-
-
-
-:: -----------Clean Windows Defender scan history------------
-
 echo --- Clean Windows Defender scan history
 del "%ProgramData%\Microsoft\Windows Defender\Scans\History\" /s /f /q
-
-
-
-
-:: Clear Optional Component Manager and COM+ components logs-
 
 echo --- Clear Optional Component Manager and COM+ components logs
 del /f /q %SystemRoot%\comsetup.log
 
-
-
-
-:: ------Clear Distributed Transaction Coordinator logs------
-
 echo --- Clear Distributed Transaction Coordinator logs
 del /f /q %SystemRoot%\DtcInstall.log
-
-
-
-
-:: --------Clear Pending File Rename Operations logs---------
 
 echo --- Clear Pending File Rename Operations logs
 del /f /q %SystemRoot%\PFRO.log
 
-
-
-
-:: ------Clear Windows Deployment Upgrade Process Logs-------
-
 echo --- Clear Windows Deployment Upgrade Process Logs
 del /f /q %SystemRoot%\setupact.log
 del /f /q %SystemRoot%\setuperr.log
-
-
-
-
-:: -----------------Clear Windows Setup Logs-----------------
 
 echo --- Clear Windows Setup Logs
 del /f /q %SystemRoot%\setupapi.log
@@ -1637,49 +1348,21 @@ del /f /q %SystemRoot%\inf\setupapi.app.log
 del /f /q %SystemRoot%\inf\setupapi.dev.log
 del /f /q %SystemRoot%\inf\setupapi.offline.log
 
-
-
-
-:: --------Clear Windows System Assessment Tool logs---------
-
 echo --- Clear Windows System Assessment Tool logs
 del /f /q %SystemRoot%\Performance\WinSAT\winsat.log
-
-
-
-
-:: ---------------Clear Password change events---------------
 
 echo --- Clear Password change events
 del /f /q %SystemRoot%\debug\PASSWD.LOG
 
-
-
-
-:: --------------Clear user web cache database---------------
-
 echo --- Clear user web cache database
 del /f /q %localappdata%\Microsoft\Windows\WebCache\*.*
-
-
-
-
-:: ----Clear system temp folder when no one is logged in-----
 
 echo --- Clear system temp folder when no one is logged in
 del /f /q %SystemRoot%\ServiceProfiles\LocalService\AppData\Local\Temp\*.*
 
-
-
-:: Clear DISM (Deployment Image Servicing and Management) Logs
 echo --- Clear DISM (Deployment Image Servicing and Management) Logs
 del /f /q  %SystemRoot%\Logs\CBS\CBS.log
 del /f /q  %SystemRoot%\Logs\DISM\DISM.log
-
-
-
-
-:: -------Clear WUAgent (Windows Update History) logs--------
 
 echo --- Clear WUAgent (Windows Update History) logs
 setlocal EnableDelayedExpansion 
@@ -1694,86 +1377,33 @@ setlocal EnableDelayedExpansion
     )
 endlocal
 
-
-
-
-:: --------Clear Server-initiated Healing Events Logs--------
-
 echo --- Clear Server-initiated Healing Events Logs
 del /f /q "%SystemRoot%\Logs\SIH\*"
-
-
-
-
-:: ---------------Common Language Runtime Logs---------------
 
 echo --- Common Language Runtime Logs
 del /f /q "%LocalAppData%\Microsoft\CLR_v4.0\UsageTraces\*"
 del /f /q "%LocalAppData%\Microsoft\CLR_v4.0_32\UsageTraces\*"
-
-
-
-
-:: ------------Network Setup Service Events Logs-------------
-
 echo --- Network Setup Service Events Logs
 del /f /q "%SystemRoot%\Logs\NetSetup\*"
-
-
-
-
-:: ----------Disk Cleanup tool (Cleanmgr.exe) Logs-----------
-
 echo --- Disk Cleanup tool (Cleanmgr.exe) Logs
 del /f /q "%SystemRoot%\System32\LogFiles\setupcln\*"
-
-
-
-
-:: ----------Clear Windows update and SFC scan logs----------
-
 echo --- Clear Windows update and SFC scan logs
 del /f /q %SystemRoot%\Temp\CBS\*
-
-
-
-
-:: ---------Clear Windows Update Medic Service logs----------
-
 echo --- Clear Windows Update Medic Service logs
 takeown /f %SystemRoot%\Logs\waasmedic /r /d y
 icacls %SystemRoot%\Logs\waasmedic /grant administrators:F /t
 rd /s /q %SystemRoot%\Logs\waasmedic
-
-
-
-
-:: -----------Clear Cryptographic Services Traces------------
-
 echo --- Clear Cryptographic Services Traces
 del /f /q %SystemRoot%\System32\catroot2\dberr.txt
 del /f /q %SystemRoot%\System32\catroot2.log
 del /f /q %SystemRoot%\System32\catroot2.jrs
 del /f /q %SystemRoot%\System32\catroot2.edb
 del /f /q %SystemRoot%\System32\catroot2.chk
-
-
-
-
-:: ----------------Windows Update Events Logs----------------
-
 echo --- Windows Update Events Logs
 del /f /q "%SystemRoot%\Logs\SIH\*"
-
-
-
-
-:: -------------------Windows Update Logs--------------------
-
 echo --- Windows Update Logs
 del /f /q "%SystemRoot%\Traces\WindowsUpdate\*"
-
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :B
@@ -1786,200 +1416,51 @@ echo %g%_________________________
 echo.
 echo         Full Debloat        
 echo %g%_________________________
-timeout /t 3 >nul
-@echo off
-@echo off
-:: https://privacy.sexy — v0.11.4 — Sun, 09 Oct 2022 15:12:56 GMT
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
-
-
-:: --------------------App Connector app---------------------
 
 echo --- App Connector app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Appconnector' | Remove-AppxPackage"
-
-
-
-
-:: ------------------Uninstall Cortana app-------------------
-
 echo --- Uninstall Cortana app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.549981C3F5F10' | Remove-AppxPackage"
-
-
-
-
-:: --------------------App Installer app---------------------
-
 echo --- App Installer app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.DesktopAppInstaller' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Get Help app-----------------------
-
 echo --- Get Help app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.GetHelp' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Microsoft Tips app--------------------
-
 echo --- Microsoft Tips app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Getstarted' | Remove-AppxPackage"
-
-
-
-
-:: -----------------Microsoft Messaging app------------------
-
 echo --- Microsoft Messaging app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Messaging' | Remove-AppxPackage"
-
-
-
-
-:: -----------------Mixed Reality Portal app-----------------
-
 echo --- Mixed Reality Portal app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.MixedReality.Portal' | Remove-AppxPackage"
-
-
-
-
-:: ---------------------Feedback Hub app---------------------
-
 echo --- Feedback Hub app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsFeedbackHub' | Remove-AppxPackage"
-
-
-
-
-:: ---------------Windows Alarms and Clock app---------------
-
 echo --- Windows Alarms and Clock app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsAlarms' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Windows Camera app--------------------
-
 echo --- Windows Camera app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsCamera' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Paint 3D app-----------------------
-
 echo --- Paint 3D app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.MSPaint' | Remove-AppxPackage"
-
-
-
-
-:: ---------------------Windows Maps app---------------------
-
 echo --- Windows Maps app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsMaps' | Remove-AppxPackage"
-
-
-
-
-:: ---------------Minecraft for Windows 10 app---------------
-
 echo --- Minecraft for Windows 10 app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.MinecraftUWP' | Remove-AppxPackage"
-
-
-
-
-:: -------------------Microsoft Store app--------------------
-
 echo --- Microsoft Store app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.WindowsStore' | Remove-AppxPackage"
-
-
-
-
-:: -------------------Microsoft People app-------------------
-
 echo --- Microsoft People app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.People' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Microsoft Pay app---------------------
-
 echo --- Microsoft Pay app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Wallet' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Store Purchase app--------------------
-
 echo --- Store Purchase app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.StorePurchaseApp' | Remove-AppxPackage"
-
-
-
-
-:: --------------------Snip & Sketch app---------------------
-
 echo --- Snip ^& Sketch app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.ScreenSketch' | Remove-AppxPackage"
-
-
-
-
-:: -----------------------Print 3D app-----------------------
-
 echo --- Print 3D app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.Print3D' | Remove-AppxPackage"
-
-
-
-
-:: ---------------------Mobile Plans app---------------------
-
 echo --- Mobile Plans app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.OneConnect' | Remove-AppxPackage"
-
-
-
-
-:: ------------Microsoft Solitaire Collection app------------
-
 echo --- Microsoft Solitaire Collection app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.MicrosoftSolitaireCollection' | Remove-AppxPackage"
-
-
-
-
-:: ----------------Microsoft Sticky Notes app----------------
-
 echo --- Microsoft Sticky Notes app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.MicrosoftStickyNotes' | Remove-AppxPackage"
-
-
-
-
-:: ------------------Mail and Calendar app-------------------
-
 echo --- Mail and Calendar app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'microsoft.windowscommunicationsapps' | Remove-AppxPackage"
 
@@ -2823,68 +2304,20 @@ PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online
 
 echo --- Mixed Reality capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Analog.Holographic.Desktop*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ---------------Wireless Display capability----------------
-
 echo --- Wireless Display capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'App.WirelessDisplay.Connect*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: --------Accessibility - Braille Support capability--------
-
 echo --- Accessibility - Braille Support capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Accessibility.Braille*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ----------------Developer Mode capability-----------------
-
 echo --- Developer Mode capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Tools.DeveloperMode.Core*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ----------------Graphics Tools capability-----------------
-
 echo --- Graphics Tools capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Tools.Graphics.DirectX*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ---------------------IrDA capability----------------------
-
 echo --- IrDA capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Network.Irda*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: --------------Microsoft WebDriver capability--------------
-
 echo --- Microsoft WebDriver capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Microsoft.WebDriver*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ----------MSIX Packaging Tool Driver capability-----------
-
 echo --- MSIX Packaging Tool Driver capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'Msix.PackagingTool.Driver*' | Remove-WindowsCapability -Online"
-
-
-
-
-:: ----------------OpenSSH Server capability-----------------
-
 echo --- OpenSSH Server capability
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-WindowsCapability -Online -Name 'OpenSSH.Server*' | Remove-WindowsCapability -Online"
 
@@ -3313,8 +2746,7 @@ dism /Online /Disable-Feature /FeatureName:"Printing-XPSServices-Features" /NoRe
 
 echo --- XPS Viewer feature
 dism /Online /Disable-Feature /FeatureName:"Xps-Foundation-Xps-Viewer" /NoRestart
-
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :C
@@ -3329,8 +2761,6 @@ echo         Remover OneDrive)
 echo %g%_____________________________________
 timeout /t 3 >nul
 @echo off
-:: https://privacy.sexy — v0.11.4 — Sun, 09 Oct 2022 16:21:43 GMT
-
 fltmc >nul 2>&1 || (
     echo Administrator privileges are required.
     PowerShell Start -Verb RunAs '%0' 2> nul || (
@@ -3433,8 +2863,6 @@ for /f "tokens=1 delims=," %%x in ('schtasks /query /fo csv ^| find "OneDrive"')
 
 echo --- Delete OneDrive path from registry
 reg delete "HKCU\Environment" /v "OneDrive" /f
-
-
 goto TweaksMenu
 
 :D
@@ -3534,8 +2962,6 @@ PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -A
 
 echo --- Uninstall Edge (chromium-based)
 PowerShell -ExecutionPolicy Unrestricted -Command "$installer = (Get-ChildItem "^""$env:ProgramFiles*\Microsoft\Edge\Application\*\Installer\setup.exe"^""); if (!$installer) {; Write-Host 'Could not find the installer'; } else {; & $installer.FullName -Uninstall -System-Level -Verbose-Logging -Force-Uninstall; }"
-
-
 goto TweaksMenu
 
 :E
@@ -4582,11 +4008,6 @@ if exist "%SystemRoot%\System32\drivers\WdFilter.sys" (
     echo No action required: %SystemRoot%\System32\drivers\WdFilter.sys is not found.
 )
 
-
-
-
-:: -Disable Microsoft Defender Antivirus Boot Driver service-
-
 echo --- Disable Microsoft Defender Antivirus Boot Driver service
 PowerShell -ExecutionPolicy Unrestricted -Command "$command = 'sc stop "^""WdBoot"^"" >nul & sc config "^""WdBoot"^"" start=disabled'; $trustedInstallerSid = [System.Security.Principal.SecurityIdentifier]::new('S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464'); $trustedInstallerName = $trustedInstallerSid.Translate([System.Security.Principal.NTAccount]); $streamOutFile = New-TemporaryFile; $batchFile = New-TemporaryFile; try {; $batchFile = Rename-Item $batchFile "^""$($batchFile.BaseName).bat"^"" -PassThru; "^""@echo off`r`n$command`r`nexit 0"^"" | Out-File $batchFile -Encoding ASCII; $taskName = 'privacy.sexy invoke'; schtasks.exe /delete /tn "^""$taskName"^"" /f 2>&1 | Out-Null <# Clean if something went wrong before, suppress any output #>; $taskAction = New-ScheduledTaskAction -Execute 'cmd.exe' -Argument "^""cmd /c `"^""$batchFile`"^"" > $streamOutFile 2>&1"^""; $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries; Register-ScheduledTask -TaskName $taskName -Action $taskAction -Settings $settings -Force -ErrorAction Stop | Out-Null; try {; ($scheduleService = New-Object -ComObject Schedule.Service).Connect(); $scheduleService.GetFolder('\').GetTask($taskName).RunEx($null, 0, 0, $trustedInstallerName) | Out-Null; $timeOutLimit = (Get-Date).AddMinutes(5); Write-Host "^""Running as $trustedInstallerName"^""; while((Get-ScheduledTaskInfo $taskName).LastTaskResult -eq 267009) {; Start-Sleep -Milliseconds 200; if((Get-Date) -gt $timeOutLimit) {; Write-Warning "^""Skipping results, it took so long to execute script."^""; break;; }; }; if (($result = (Get-ScheduledTaskInfo $taskName).LastTaskResult) -ne 0) {; Write-Error "^""Failed to execute with exit code: $result."^""; }; } finally {; schtasks.exe /delete /tn "^""$taskName"^"" /f | Out-Null <# Outputs only errors #>; }; Get-Content $streamOutFile; } finally {; Remove-Item $streamOutFile, $batchFile; }"
 if exist "%SystemRoot%\System32\drivers\WdBoot.sys" (
@@ -4609,7 +4030,6 @@ echo --- Disable SmartScreen preventing users from running applications
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "ShellSmartScreenLevel" /t REG_SZ /d "Warn" /f
 echo --- Prevent Chromium Edge SmartScreen from blocking potentially unwanted apps
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v "SmartScreenPuaEnabled" /t REG_DWORD /d "0" /f
-
 echo --- Disable SmartScreen in Edge
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" /v "EnabledV9" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" /v "PreventOverride" /t REG_DWORD /d "0" /f
@@ -4625,30 +4045,20 @@ reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen" /v "Conf
 echo --- Turn off SmartScreen to check web content (URLs) that apps use
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
-pause
-exit /b 0
 goto TweaksMenu
 
 :H
 chcp 437>nul
 chcp 65001 >nul
-echo.
-echo.
-cls
 echo %g%_____________________________________
 echo.
 echo         Internet Refresher             
 echo %g%_____________________________________
-timeout /t 3 >nul
-cls
 ipconfig /all
 ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
-echo.
-echo %g%======PRESS ANY KEY TO CONTINUE======
-
-pause >nul
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :I
@@ -4661,29 +4071,14 @@ echo %g%_____________________________________
 echo.
 echo       Disable Automatic Updates  
 echo %g%_____________________________________
-timeout /t 3 >nul
-@echo off
-
-fltmc >nul 2>&1 || (
-    echo Administrator privileges are required.
-    PowerShell Start -Verb RunAs '%0' 2> nul || (
-        echo Right-click on the script and select "Run as administrator".
-        pause & exit 1
-    )
-    exit 0
-)
-
 echo --- Disable device metadata retrieval (breaks auto updates)
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d 1 /f
-
 echo --- Do not include drivers with Windows Updates
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ExcludeWUDriversInQualityUpdate" /t REG_DWORD /d 1 /f
-
 echo --- Prevent Windows Update for device driver search
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig" /t REG_DWORD /d 0 /f
-
-
+timeout /t 2 >nulss
 goto TweaksMenu
 
 :Finish
