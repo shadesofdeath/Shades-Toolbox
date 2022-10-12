@@ -1,15 +1,21 @@
-@echo off
+echo off
+cls
 set version=2.0
 title Shades Toolbox - %version% 
+chcp 65001 > NUL
+::Renklendirme komutu
 setlocal
-call :setESC
+for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (set R=%%b)
+
 if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 SET webhook=
+
 cd /d "%~dp0"
 for /f %%a in ('"cd"') do set Location=%%a
+
 set NSudo="%Location%\Files\NSudo.exe" -U:T -P:E -Wait -ShowWindowMode:hide cmd /c
+
 :loading
-chcp 65001 >nul
 cls
 echo.
 echo.
@@ -18,22 +24,21 @@ echo.
 echo.
 echo.
 echo.                                 
-echo         %ESC%[91m        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+echo         %R%[91m        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 echo                 ██░▄▄▄░██░██░█░▄▄▀██░▄▄▀██░▄▄▄██░▄▄▄░███▄▄░▄▄██░▄▄▄░██░▄▄▄░██░█████░▄▄▀██░▄▄▄░█▄▀█▀▄
 echo                 ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██
 echo                 ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
-echo                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀%ESC%[0m
+echo                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀%R%[0m
 echo.
-echo                              %ESC%[36mVersion: %ESC%[33m%version%   %ESC%[31mUser %ESC%[36m%username%  %ESC%[94mDate %ESC%[35m%date% %ESC%[0m                 
+echo                              %R%[36mVersion: %R%[33m%version%   %R%[31mUser %R%[36m%username%  %R%[94mDate %R%[35m%date% %R%[0m                 
 echo.
-echo                                             %ESC%[1mPress any key to start...%ESC%[0m
+echo                                             %R%[1mPress any key to start...%R%[0m
 echo.         
 echo.
 pause >nul
+
 :menu
 cls
-chcp 437>nul
-chcp 65001 >nul
 echo.
 echo.
 echo.
@@ -41,16 +46,16 @@ echo.
 echo.
 echo.
 echo.
-echo.       %ESC%[91m                          
+echo.       %R%[91m                          
 echo                 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 echo                 ██░▄▄▄░██░██░█░▄▄▀██░▄▄▀██░▄▄▄██░▄▄▄░███▄▄░▄▄██░▄▄▄░██░▄▄▄░██░█████░▄▄▀██░▄▄▄░█▄▀█▀▄
 echo                 ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██ 
 echo                 ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
-echo                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    %ESC%[0m
+echo                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    %R%[0m
 echo.
-echo                                          %ESC%[36m[1] Tweaks        %ESC%[33m[2] Download
+echo                                          %R%[36m[1] Tweaks        %R%[33m[2] Download
 echo.     
-echo                                                    %ESC%[31m[X] Exit%ESC%[0m
+echo                                                    %R%[31m[X] Exit%R%[0m
 echo.                                              
 echo.
 echo.
@@ -64,31 +69,29 @@ goto Menu
 
 :Downloader
 mode con cols=200 lines=200
-chcp 437>nul
-chcp 65001 >nul
-echo.                 %ESC%[91m 
+echo.                 %R%[91m 
 echo                                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 echo                                       ██░▄▄▄░██░██░█░▄▄▀██░▄▄▀██░▄▄▄██░▄▄▄░███▄▄░▄▄██░▄▄▄░██░▄▄▄░██░█████░▄▄▀██░▄▄▄░█▄▀█▀▄
 echo                                       ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██ 
 echo                                       ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
-echo                                       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  %ESC%[0m                                                                                                                              %ESC%[0m   
-echo                                                    %ESC%[36mVersion: %ESC%[33m%version%   %ESC%[31mUser %ESC%[36m%username%  %ESC%[94mDate %ESC%[35m%date% %ESC%[0m                                          
+echo                                       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  %R%[0m                                                                                                                              %R%[0m   
+echo                                                    %R%[36mVersion: %R%[33m%version%   %R%[31mUser %R%[36m%username%  %R%[94mDate %R%[35m%date% %R%[0m                                          
 echo.
-echo  %ESC%[91m    [Browsers]          [Runtimes]                     [Document]            [VPN]  %ESC%[0m 
+echo  %R%[91m    [Browsers]          [Runtimes]                     [Document]            [VPN]  %R%[0m 
 echo      1 Chrome            16 Java 8                      31 FoxitReader        46 OpenVPN
 echo      2  Opera            17 .Net Framework 4.8          32 LibreOffice        47 MullvadVPN
 echo      3  Firefox          18 DirectX Runtime             33 SumatraPDF         48 ExpressVPN
 echo      4  Brave            19 Java SE 18                  34 OpenOffice         49 NordVPN
 echo      5  Tor Browser      20 Visual C++ AIO 2015-2022    35 CutePDFWriter      50 MozillaVPN
 echo.                                                                                                        
-echo  %ESC%[36m     [Messaging]         [Imaging]                      [Archive]            [Download Manager]  %ESC%[0m 
+echo  %R%[36m     [Messaging]         [Imaging]                      [Archive]            [Download Manager]  %R%[0m 
 echo      6  Zoom             21 GIMP                        36 WinRAR             51 IDM
 echo      7  Discord          22 IrfanView8                  37 7zip               52 XDM
 echo      8  Skype            23 ShareX                      38 IZArc              53 JDownloader
 echo      9  WhatsApp         24 MyPaint                     39 Peazip             54 FreeDownloadManager
 echo      10 Telegram         25 Blender                     40 Bandizip           55 NeatDownloadManage
 echo.
-echo  %ESC%[33m    [Video / Sound]     [Anivirus]                     [Other]               [Torrent]  %ESC%[0m 
+echo  %R%[33m    [Video / Sound]     [Anivirus]                     [Other]               [Torrent]  %R%[0m 
 echo      11 Vlc              26  Malwarebytes               41 Evernote           56 qBittorrent 
 echo      12 Winamp           27  EsetNod32                  42 Google Earth Pro   57 PicoTorrent 
 echo      13 Gom Player       28  IObit Malware Fighter      43 Steam              58 Deluge Torrent
@@ -98,7 +101,6 @@ echo      ╔══════════════════════�
 echo      ║                [M] Menu                                             [F] Exit                       ║
 echo      ╚════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo.
-
 set menu=xy 
 set /p menu=" Choose an option » "
 if %menu% EQU 1 (Call :Winget "Google.Chrome")
@@ -171,7 +173,6 @@ goto Downloader
 winget install -e --id %~1
 goto :Eof
 
-
 :TweaksMenu
 mode con cols=170 lines=45
 cls
@@ -185,11 +186,11 @@ echo                       ██░▄▄▄░██░██░█░▄▄�
 echo                       ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██ 
 echo                       ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
 echo                       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-echo                                      %ESC%[32mVersion: %version% %ESC%[0m  %ESC%[94mUser%ESC%[0m %username%  %ESC%[94mDate%ESC%[0m %date%             
+echo                                      %R%[32mVersion: %version% %R%[0m  %R%[94mUser%R%[0m %username%  %R%[94mDate%R%[0m %date%             
 echo                 ╔═════════════════════════════════════════╦═══╦══════════════════════════════════════════════╗
 echo                 ╠══════════════Windows Cleaning═══════════║═══║══════════════════Bloatware═══════════════════╣
 echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 1 ║ Remove logs and Caches              ║ 18║ Uninsta%ESC%ll provisioned Windows apps      ║
+echo                 ║ 1 ║ Remove logs and Caches              ║ 18║ Uninsta%R%ll provisioned Windows apps      ║
 echo                 ║ 2 ║ Full Debloat                        ║ 19║ Uninstall installed Windows apps             ║
 echo                 ║ 3 ║ Remove OneDrive                     ║ 20║ Unninstall System Apps                       ║
 echo                 ║ 4 ║ Remove Microsoft Edge               ║ 21║ Clear previous Windows installations         ║
@@ -217,7 +218,7 @@ echo                 ║══════════════════�
 echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
 echo                 ║ 35║ 8.1 Style Wifi Menu(Only Win10)     ║ 39║ Soon                                         ║
 echo                 ║ 36║ Add Personalize (Old) ContextMenu   ║ 40║ Soon                                         ║
-echo                 ║ 37║ Tweaking for Gaming / Etc           ║ 41║ Soon                                         ║
+echo                 ║ 37║ NetFramework 3.5 Offline Install    ║ 41║ Soon                                         ║
 echo                 ║ 38║ Soon                                ║ 42║ Soon                                         ║
 echo                 ╚═══╩═════════════════════════════════════╩═══╩══════════════════════════════════════════════╝
 echo                 ╔════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -261,7 +262,7 @@ if %M%==33 goto DisableBackgroundApps
 if %M%==34 goto FileExplorerClassicRibbon
 if %M%==35 goto 8.1StyleWifiMenu
 if %M%==36 goto oldPersonalize
-if %M%==37 goto gamingtweak
+if %M%==37 goto netframework3.5
 if %M%==M goto menu
 if %M%==m goto menu
 if %M%==L goto Finish
@@ -269,21 +270,14 @@ if %M%==l goto Finish
 pause >nul
 goto TweaksMenu
 
-:gamingtweak
-chcp 437 > NUL 2>&1
-chcp 65001 >nul
-
-echo Explorer.exe Resarting.. Please Wait..
-timeout /t 2 >nul
-echo Succesfully..
-timeout /t 2 >nul
-taskkill /im explorer.exe /f
-start explorer
+:netframework3.5
+DISM /Online /Get-Capabilities /format:table > %Temp%\Capabilities.txt
+FOR /F "tokens=3" %%a in ('Findstr /i "NetFX3" %Temp%\Capabilities.txt') do (echo %%a | Findstr /i "Installed" > NUL 2>&1)
+	if %errorlevel% EQU 1 (Call :wget "%Location%\Files\sources\net3.5.cab"
+						   DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:%Location%\Files\sources\ /LimitAccess)
 goto TweaksMenu
 
 :oldPersonalize
-chcp 437 > NUL 2>&1
-chcp 65001 >nul
 Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "Icon" /t REG_SZ /d "themecpl.dll" /f
 Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "MUIVerb" /t REG_SZ /d "Personalize (classic)" /f
 Reg.exe add "HKCR\DesktopBackground\Shell\Personalization" /v "Position" /t REG_SZ /d "Bottom" /f
@@ -673,8 +667,6 @@ timeout /t 2 >nulss
 goto TweaksMenu
 
 :UnninstallSystemApps
-chcp 437 >null
-chcp 65001 >nul
 echo --- File Picker app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers '1527c705-839a-4832-9118-54d4Bd6a0c89'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
 echo --- File Explorer app
@@ -753,8 +745,6 @@ timeout /t 2 >nulss
 goto TweaksMenuak
 
 :UninstallinstalledWindowsapps
-chcp 437 >null
-chcp 65001 >nul
 echo %g%_____________________________________________
 echo.
 echo      Uninstall installed Windows apps  
@@ -1088,6 +1078,17 @@ Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be
 timeout /t 2 >nulss
 goto TweaksMenu
 
+:wget
+:: [%~1=Download Name] [%~2=Silent Install]
+ping -n 1 www.bing.com > NUL
+	if %errorlevel%==1 (echo %R%[31m İnternet bağlantısı yok %R%[0m
+						timeout /t 2 /nobreak > NUL
+						goto :eof
+)
+echo    %R%[90m[Wget]%R%[0m ►%R%[33m %~n1%~x1%R%[0m indiriliyor %R%[90m/%R%[0m yükleniyor...
+FOR /F "tokens=1" %%i in ('Findstr /C:"%~n1%~x1" %Location%\Files\Links.txt') do set link=%%i
+%Location%\Files\wget.exe -c -q --no-check-certificate --show-progress "%link%" -t 10 -O %~1
+goto :eof
 
 :K
 chcp 437 >null
