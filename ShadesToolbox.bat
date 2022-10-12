@@ -210,6 +210,13 @@ echo                 ║ 14║ Disable SmartScreen                 ║ 31║ Dis
 echo                 ║ 15║ Run Disk Defrag                     ║ 32║ Enable Old Context Menu                      ║
 echo                 ║ 16║ Disable Windows Update              ║ 33║ Disable Background Apps                      ║
 echo                 ║ 17║ Disable Telemetry Services          ║ 34║ File Explorer Classic Ribbon                 ║
+echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
+echo                 ║═══════════════════Other═════════════════║═══║═════════════Windows 11 Tweaks════════════════║
+echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
+echo                 ║ 35║ Windows 8.1 Style Wifi Menu         ║ 39║ Soon                                         ║
+echo                 ║ 36║ Soon                                ║ 40║ Soon                                         ║
+echo                 ║ 37║ Soon                                ║ 41║ Soon                                         ║
+echo                 ║ 38║ Soon                                ║ 42║ Soon                                         ║
 echo                 ╚═══╩═════════════════════════════════════╩═══╩══════════════════════════════════════════════╝
 echo                 ╔════════════════════════════════════════════════════════════════════════════════════════════╗
 echo                 ║                 [M] Menu                                [F] Exit                           ║
@@ -250,11 +257,21 @@ if %M%==31 goto disablewidget
 if %M%==32 goto oldcontext
 if %M%==33 goto DisableBackgroundApps
 if %M%==34 goto FileExplorerClassicRibbon
+if %M%==35 goto 8.1StyleWifiMenu
 if %M%==M goto menu
 if %M%==L goto Finish
 pause >nul
 goto TweaksMenu
 
+
+:8.1StyleWifiMenu
+chcp 437 > NUL 2>&1
+chcp 65001 >nul
+::set NSudo="%Location%\Files\NSudo.exe" -U:T -P:E -Wait -ShowWindowMode:hide cmd /c
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Settings\Network" /v "ReplaceVan" /t REG_DWORD /d 2 /f
+echo Succesfully..
+timeout /t 2 >nul
+goto TweaksMenu
 
 
 :FileExplorerClassicRibbon
