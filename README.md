@@ -75,13 +75,13 @@ This app works on both Windows 10 and 11. The other has not been tested on opera
 #### Downloads
 - Allows you to install one of the applications from the list.
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/1.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/1.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/2.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/2.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/3.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/3.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/4.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/4.png)
 
 ### 🤝 Contributing
 
