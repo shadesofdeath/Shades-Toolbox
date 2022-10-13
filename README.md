@@ -1,5 +1,5 @@
 <p align="center">
- <img Image="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png?raw=true" width="200">
+ <img Image="https://github.com/berkays0733/Shades-Toolbox/blob/main/Image/shades.png" width="200">
 </p>
 
 ### ⚠️ About 
