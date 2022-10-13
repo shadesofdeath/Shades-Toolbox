@@ -1,6 +1,8 @@
+<<<<<<< HEAD
 ## Shades Toolbox
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png)
+<img src="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png" width="200px">
+
 
 ### ⚠️ About 
 
