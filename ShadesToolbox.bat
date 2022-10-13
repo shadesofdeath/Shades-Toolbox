@@ -2,6 +2,28 @@ echo off
 cls
 set version=2.1
 title Shades Toolbox - %version% 
+
+echo off
+cls
+chcp 65001 > NUL
+
+
+::Renklendirme komutu
+setlocal
+for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (set R=%%b)
+
+
+cd /d "%~dp0"
+for /f %%a in ('"cd"') do set Location=%%a
+
+
+if C:\Shades-Toolbox NEQ %Location% (echo %R%[31m Move Shades-Toolbox Folder to Local Disk C !%R%[0m
+									 echo.
+									 echo %R%[32m Shades-Toolbox Closing...
+									 timeout /t 3 /nobreak > NUL
+									 exit
+)
+
 chcp 65001 > NUL
 ::Renklendirme komutu
 setlocal
@@ -224,7 +246,7 @@ echo                 ╠═══╦══════════════�
 echo                 ║ 35║ 8.1 Style Wifi Menu(Only Win10)     ║ 39║ Soon                                         ║
 echo                 ║ 36║ Add Personalize (Old) ContextMenu   ║ 40║ Soon                                         ║
 echo                 ║ 37║ NetFramework 3.5 Online Install     ║ 41║ Soon                                         ║
-echo                 ║ 38║ Soon                                ║ 42║ Soon                                         ║
+echo                 ║ 38║ Shades ISO Downlaoder               ║ 42║ Soon                                         ║
 echo                 ╚═══╩═════════════════════════════════════╩═══╩══════════════════════════════════════════════╝
 echo                 ╔════════════════════════════════════════════════════════════════════════════════════════════╗
 echo                 ║                 [M] Menu                                [F] Exit                           ║
@@ -268,6 +290,7 @@ if %M%==34 goto FileExplorerClassicRibbon
 if %M%==35 goto 8.1StyleWifiMenu
 if %M%==36 goto oldPersonalize
 if %M%==37 goto netframework3.5
+if %M%==38 goto Shades-ISO-Downlaoder
 if %M%==M goto menu
 if %M%==m goto menu
 if %M%==L goto Finish
@@ -275,8 +298,14 @@ if %M%==l goto Finish
 pause >nul
 goto TweaksMenu
 
+:Shades-ISO-Downlaoder
+chcp 437 > NUL 2>&1
+Powershell -command "Start-Process 'C:\Toolbox\Files\Shades-ISO-Downlaoder.bat'"
+chcp 65001 >nul
+timeout /t 2 >nulss
+goto TweaksMenu
+
 :netframework3.5
-Title Shades-Toolbox .NET Framework 3.5 Offline Installer
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 timeout /t 2 >nul
 goto TweaksMenu
