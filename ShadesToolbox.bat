@@ -1,6 +1,6 @@
 echo off
 cls
-set version=2.1
+set version=2.2
 title Shades Toolbox - %version% 
 
 echo off
