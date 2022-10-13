@@ -1,6 +1,6 @@
 echo off
 cls
-set version=2.2
+set version=2.3
 title Shades Toolbox - %version% 
 
 echo off
@@ -214,40 +214,28 @@ echo                       ██▄▄▄▀▀██░▄▄░█░▀▀�
 echo                       ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
 echo                       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 echo                                      %R%[32mVersion: %version% %R%[0m  %R%[94mUser%R%[0m %username%  %R%[94mDate%R%[0m %date%   
-echo                 ╔═════════════════════════════════════════╦═══╦══════════════════════════════════════════════╗
-echo                 ╠═════════════ Windows Cleaning ══════════║═══║═════════════════ Bloatware ══════════════════╣
-echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 1 ║ Remove logs and Caches              ║ 18║ Uninstall provisioned Windows apps           ║
-echo                 ║ 2 ║ Full Debloat                        ║ 19║ Uninstall installed Windows apps             ║
-echo                 ║ 3 ║ Remove OneDrive                     ║ 20║ Unninstall System Apps                       ║
-echo                 ║ 4 ║ Remove Microsoft Edge               ║ 21║ Clear previous Windows installations         ║
-echo                 ║ 5 ║ Remove Taskbar MeetNow Logo         ║ 22║ Disable Windows Features                     ║
-echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║══════════════ Windows Tweaks ═══════════║═══║══════════════════ Other ═════════════════════║
-echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 6 ║ Disable Windows Defender            ║ 23║ Enable Old Volume Bar                        ║
-echo                 ║ 7 ║ Stop Windows Updates until 2099     ║ 24║ Enable Legacy Boot Menu                      ║
-echo                 ║ 8 ║ Enable Old Photo Viewer             ║ 25║ Run CompactOS                                ║
-echo                 ║ 9 ║ Disable Windows Driver Updates      ║ 26║ Add Context Menu Take Ownership              ║
-echo                 ║ 10║ Ram Optimization                    ║ 27║ Shades Windows Activator                     ║
-echo                 ║ 11║ Network Optimization                ║ 28║ Paging File (Virtual Memory)                 ║
-echo                 ║ 12║ CPU Optimization                    ║ 29║ Windows Version Switcher                     ║
-echo                 ║ 13║ Mouse/Keyboard Optimization         ║ 30║ Enable Old Alt+Tab Menu                      ║
-echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║══════════════════ Other ════════════════║═══║════════════ Windows 11 Tweaks ═══════════════║
-echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 14║ Disable SmartScreen                 ║ 31║ Disable Widgets                              ║
-echo                 ║ 15║ Run Disk Defrag                     ║ 32║ Enable Old Context Menu                      ║
-echo                 ║ 16║ Disable Windows Update              ║ 33║ Disable Background Apps                      ║
-echo                 ║ 17║ Disable Telemetry Services          ║ 34║ File Explorer Classic Ribbon                 ║
-echo                 ╠═══╩═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║══════════════════ Other ════════════════║═══║════════════════════ Soon ════════════════════║
-echo                 ╠═══╦═════════════════════════════════════╠═══╣══════════════════════════════════════════════╣
-echo                 ║ 35║ 8.1 Style Wifi Menu(Only Win10)     ║ 39║ Soon                                         ║
-echo                 ║ 36║ Add Personalize (Old) ContextMenu   ║ 40║ Soon                                         ║
-echo                 ║ 37║ NetFramework 3.5 Online Install     ║ 41║ Soon                                         ║
-echo                 ║ 38║ Shades ISO Downlaoder               ║ 42║ Soon                                         ║
-echo                 ╚═══╩═════════════════════════════════════╩═══╩══════════════════════════════════════════════╝
+echo.
+echo      1  Remove logs and Caches              21 Clear previous Windows installations 
+echo      2  Full Debloat                        22 Disable Windows Features             
+echo      3  Remove OneDrive                     23 Enable Old Volume Bar               
+echo      4  Remove Microsoft Edge               24 Enable Legacy Boot Menu          
+echo      5  Remove Taskbar MeetNow Logo         25 Run CompactOS                      
+echo      6  Disable Windows Defender            26 Add Context Menu Take Ownership      
+echo      7  Stop Windows Updates until 2099     27 Shades Windows Activator            
+echo      8  Enable Old Photo Viewer             28 Paging File (Virtual Memory)       
+echo      9  Disable Windows Driver Updates      29 Windows Version Switcher               
+echo      10 Ram Optimization                    30 Enable Old Alt+Tab Menu            
+echo      11 Network Optimization                31 Disable Widgets                  
+echo      12 CPU Optimization                    32 Enable Old Context Menu              
+echo      13 Mouse/Keyboard Optimization         33 Disable Background Apps              
+echo      14 Disable SmartScreen                 34 File Explorer Classic Ribbon          
+echo      15 Run Disk Defrag                     35 8.1 Style Wifi Menu(Only Win10       
+echo      16 Disable Windows Update              36 Add Personalize (Old) ContextMenu    
+echo      17 Disable Telemetry Services          37 NetFramework 3.5 Online Install
+echo      18 Uninstall provisioned Windows apps  38 %R%[91mShades ISO Downlaoder%R%[0m 
+echo      19 Uninstall installed Windows apps    39 Soon..                                 
+echo      20 Unninstall System Apps              40 Soon..                                  
+echo.                                                                                         
 echo                 ╔════════════════════════════════════════════════════════════════════════════════════════════╗
 echo                 ║                 [M] Menu                                [F] Exit                           ║
 echo                 ╚════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -300,7 +288,7 @@ goto TweaksMenu
 
 :Shades-ISO-Downloader
 chcp 437 > NUL 2>&1
-Powershell -command "Start-Process 'C:\Shades-Toolbox\Files\Shades-ISO-Downloader.bat'"
+Powershell -command "Start-Process 'C:\Shades-Toolbox\Files\Windows-Office.bat'"
 chcp 65001 >nul
 timeout /t 2 >nul
 goto TweaksMenu
@@ -1276,21 +1264,27 @@ goto TweaksMenu
 :A
 chcp 437>nul
 chcp 65001 >nul
-echo.
-echo.
-cls
-echo %g%_____________________________________________
-echo.
-echo       Clear Windows logs / caches         
-echo %g%_____________________________________________
-@echo off
+:: ----------------------------------------------------------
+:: ------------------Clear thumbnail cache-------------------
+:: ----------------------------------------------------------
 echo --- Clear thumbnail cache
 del /f /s /q /a %LocalAppData%\Microsoft\Windows\Explorer\*.db
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: -----------------Clear Windows temp files-----------------
+:: ----------------------------------------------------------
 echo --- Clear Windows temp files
 del /f /q %localappdata%\Temp\*
 rd /s /q "%WINDIR%\Temp"
 rd /s /q "%TEMP%"
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ----------------Clear main telemetry file-----------------
+:: ----------------------------------------------------------
 echo --- Clear main telemetry file
 if exist "%ProgramData%\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" (
     takeown /f "%ProgramData%\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" /r /d y
@@ -1300,53 +1294,117 @@ if exist "%ProgramData%\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtr
 ) else (
     echo "Main telemetry file does not exist. Good!"
 )
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: -------------Clear Event Logs in Event Viewer-------------
+:: ----------------------------------------------------------
 echo --- Clear Event Logs in Event Viewer
+REM https://social.technet.microsoft.com/Forums/en-US/f6788f7d-7d04-41f1-a64e-3af9f700e4bd/failed-to-clear-log-microsoftwindowsliveidoperational-access-is-denied?forum=win10itprogeneral
 wevtutil sl Microsoft-Windows-LiveId/Operational /ca:O:BAG:SYD:(A;;0x1;;;SY)(A;;0x5;;;BA)(A;;0x1;;;LA)
 for /f "tokens=*" %%i in ('wevtutil.exe el') DO (
     echo Deleting event log: "%%i"
     wevtutil.exe cl %1 "%%i"
 )
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: -----------Clean Windows Defender scan history------------
+:: ----------------------------------------------------------
 echo --- Clean Windows Defender scan history
 del "%ProgramData%\Microsoft\Windows Defender\Scans\History\" /s /f /q
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: Clear Optional Component Manager and COM+ components logs-
+:: ----------------------------------------------------------
 echo --- Clear Optional Component Manager and COM+ components logs
 del /f /q %SystemRoot%\comsetup.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ------Clear Distributed Transaction Coordinator logs------
+:: ----------------------------------------------------------
 echo --- Clear Distributed Transaction Coordinator logs
 del /f /q %SystemRoot%\DtcInstall.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: --------Clear Pending File Rename Operations logs---------
+:: ----------------------------------------------------------
 echo --- Clear Pending File Rename Operations logs
 del /f /q %SystemRoot%\PFRO.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ------Clear Windows Deployment Upgrade Process Logs-------
+:: ----------------------------------------------------------
 echo --- Clear Windows Deployment Upgrade Process Logs
 del /f /q %SystemRoot%\setupact.log
 del /f /q %SystemRoot%\setuperr.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: -----------------Clear Windows Setup Logs-----------------
+:: ----------------------------------------------------------
 echo --- Clear Windows Setup Logs
 del /f /q %SystemRoot%\setupapi.log
 del /f /q %SystemRoot%\Panther\*
 del /f /q %SystemRoot%\inf\setupapi.app.log
 del /f /q %SystemRoot%\inf\setupapi.dev.log
 del /f /q %SystemRoot%\inf\setupapi.offline.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: --------Clear Windows System Assessment Tool logs---------
+:: ----------------------------------------------------------
 echo --- Clear Windows System Assessment Tool logs
 del /f /q %SystemRoot%\Performance\WinSAT\winsat.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ---------------Clear Password change events---------------
+:: ----------------------------------------------------------
 echo --- Clear Password change events
 del /f /q %SystemRoot%\debug\PASSWD.LOG
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: --------------Clear user web cache database---------------
+:: ----------------------------------------------------------
 echo --- Clear user web cache database
 del /f /q %localappdata%\Microsoft\Windows\WebCache\*.*
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ----Clear system temp folder when no one is logged in-----
+:: ----------------------------------------------------------
 echo --- Clear system temp folder when no one is logged in
 del /f /q %SystemRoot%\ServiceProfiles\LocalService\AppData\Local\Temp\*.*
+:: ----------------------------------------------------------
 
+
+:: Clear DISM (Deployment Image Servicing and Management) Logs
 echo --- Clear DISM (Deployment Image Servicing and Management) Logs
 del /f /q  %SystemRoot%\Logs\CBS\CBS.log
 del /f /q  %SystemRoot%\Logs\DISM\DISM.log
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: -------Clear WUAgent (Windows Update History) logs--------
+:: ----------------------------------------------------------
 echo --- Clear WUAgent (Windows Update History) logs
 setlocal EnableDelayedExpansion 
     SET /A wuau_service_running=0
@@ -1359,33 +1417,87 @@ setlocal EnableDelayedExpansion
         net start wuauserv
     )
 endlocal
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: --------Clear Server-initiated Healing Events Logs--------
+:: ----------------------------------------------------------
 echo --- Clear Server-initiated Healing Events Logs
 del /f /q "%SystemRoot%\Logs\SIH\*"
+:: ----------------------------------------------------------
 
+
+:: ----------------------------------------------------------
+:: ---------------Common Language Runtime Logs---------------
+:: ----------------------------------------------------------
 echo --- Common Language Runtime Logs
 del /f /q "%LocalAppData%\Microsoft\CLR_v4.0\UsageTraces\*"
 del /f /q "%LocalAppData%\Microsoft\CLR_v4.0_32\UsageTraces\*"
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: ------------Network Setup Service Events Logs-------------
+:: ----------------------------------------------------------
 echo --- Network Setup Service Events Logs
 del /f /q "%SystemRoot%\Logs\NetSetup\*"
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: ----------Disk Cleanup tool (Cleanmgr.exe) Logs-----------
+:: ----------------------------------------------------------
 echo --- Disk Cleanup tool (Cleanmgr.exe) Logs
 del /f /q "%SystemRoot%\System32\LogFiles\setupcln\*"
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: ----------Clear Windows update and SFC scan logs----------
+:: ----------------------------------------------------------
 echo --- Clear Windows update and SFC scan logs
 del /f /q %SystemRoot%\Temp\CBS\*
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: ---------Clear Windows Update Medic Service logs----------
+:: ----------------------------------------------------------
 echo --- Clear Windows Update Medic Service logs
 takeown /f %SystemRoot%\Logs\waasmedic /r /d y
 icacls %SystemRoot%\Logs\waasmedic /grant administrators:F /t
 rd /s /q %SystemRoot%\Logs\waasmedic
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: -----------Clear Cryptographic Services Traces------------
+:: ----------------------------------------------------------
 echo --- Clear Cryptographic Services Traces
 del /f /q %SystemRoot%\System32\catroot2\dberr.txt
 del /f /q %SystemRoot%\System32\catroot2.log
 del /f /q %SystemRoot%\System32\catroot2.jrs
 del /f /q %SystemRoot%\System32\catroot2.edb
 del /f /q %SystemRoot%\System32\catroot2.chk
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: ----------------Windows Update Events Logs----------------
+:: ----------------------------------------------------------
 echo --- Windows Update Events Logs
 del /f /q "%SystemRoot%\Logs\SIH\*"
+:: ----------------------------------------------------------
+
+
+:: ----------------------------------------------------------
+:: -------------------Windows Update Logs--------------------
+:: ----------------------------------------------------------
 echo --- Windows Update Logs
 del /f /q "%SystemRoot%\Traces\WindowsUpdate\*"
+:: ----------------------------------------------------------
+echo Succes..
 timeout /t 2 >nul
 goto TweaksMenu
 
