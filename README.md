@@ -79,9 +79,9 @@ This app works on both Windows 10 and 11. The other has not been tested on opera
 
 ![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/2.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/3.png)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/3.PNG)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/4.png)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/4.PNG)
 
 ### 🤝 Contributing
 
