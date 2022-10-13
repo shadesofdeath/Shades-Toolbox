@@ -1,18 +1,18 @@
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/Version-1.0-blue" />
+  <img alt="Version" Image="https://img.shields.io/badge/Version-1.0-blue" />
   <a href="#" target="_blank">
-    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/berkays0733/Shades-Toolbox" />
+    <img alt="License: Apache-2.0" Image="https://img.shields.io/github/license/berkays0733/Shades-Toolbox" />
   </a>
-  <a><img alt="Downloads:" src="https://img.shields.io/badge/Downloads-1-blue" />
+  <a><img alt="Downloads:" Image="https://img.shields.io/badge/Downloads-1-blue" />
   </a>
-  <a><img alt="Is Mantained?" src="https://img.shields.io/badge/Mantained:-yes-green.svg" />
+  <a><img alt="Is Mantained?" Image="https://img.shields.io/badge/Mantained:-yes-green.svg" />
   </a>
 </p>
 <h1 align="center">
 Shades Toolbox
 </h1>
 <p align="center">
- <img src="https://github.com/berkays0733/Shades-Toolbox/raw/main/src/shades.png?raw=true" width="200">
+ <img Image="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png?raw=true" width="200">
 </p>
 
 ### ⚠️ About 
@@ -75,13 +75,13 @@ This app works on both Windows 10 and 11. The other has not been tested on opera
 #### Downloads
 - Allows you to install one of the applications from the list.
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/1.png)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/1.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/2.png)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/2.png)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/3.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/3.PNG)
 
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/src/4.PNG)
+![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/4.PNG)
 
 ### 🤝 Contributing
 
