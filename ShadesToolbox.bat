@@ -94,12 +94,12 @@ mode con cols=200 lines=200
 echo.
 echo.
 echo.                 %R%[91m 
-echo                                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-echo                                       ██░▄▄▄░██░██░█░▄▄▀██░▄▄▀██░▄▄▄██░▄▄▄░███▄▄░▄▄██░▄▄▄░██░▄▄▄░██░█████░▄▄▀██░▄▄▄░█▄▀█▀▄
-echo                                       ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██ 
-echo                                       ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
-echo                                       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  %R%[0m                                                                                                                              %R%[0m   
-echo                                                    %R%[36mVersion: %R%[33m%version%   %R%[31mUser %R%[36m%username%  %R%[94mDate %R%[35m%date% %R%[0m                                          
+echo       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+echo       ██░▄▄▄░██░██░█░▄▄▀██░▄▄▀██░▄▄▄██░▄▄▄░███▄▄░▄▄██░▄▄▄░██░▄▄▄░██░█████░▄▄▀██░▄▄▄░█▄▀█▀▄
+echo       ██▄▄▄▀▀██░▄▄░█░▀▀░██░██░██░▄▄▄██▄▄▄▀▀█████░████░███░██░███░██░█████░▄▄▀██░███░███░██ 
+echo       ██░▀▀▀░██░██░█░██░██░▀▀░██░▀▀▀██░▀▀▀░█████░████░▀▀▀░██░▀▀▀░██░▀▀░██░▀▀░██░▀▀▀░█▀▄█▄▀
+echo       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  %R%[0m                                                                                                                              %R%[0m   
+echo            %R%[36mVersion: %R%[33m%version%   %R%[31mUser %R%[36m%username%  %R%[94mDate %R%[35m%date% %R%[0m                                          
 echo.
 echo  %R%[91m    [Browsers]          [Runtimes]                     [Document]            [VPN]  %R%[0m 
 echo      1 Chrome            16 Java 8                      31 FoxitReader        46 OpenVPN
@@ -290,7 +290,7 @@ if %M%==34 goto FileExplorerClassicRibbon
 if %M%==35 goto 8.1StyleWifiMenu
 if %M%==36 goto oldPersonalize
 if %M%==37 goto netframework3.5
-if %M%==38 goto Shades-ISO-Downlaoder
+if %M%==38 goto Shades-ISO-Downloader
 if %M%==M goto menu
 if %M%==m goto menu
 if %M%==L goto Finish
@@ -298,11 +298,11 @@ if %M%==l goto Finish
 pause >nul
 goto TweaksMenu
 
-:Shades-ISO-Downlaoder
+:Shades-ISO-Downloader
 chcp 437 > NUL 2>&1
-Powershell -command "Start-Process 'C:\Toolbox\Files\Shades-ISO-Downlaoder.bat'"
+Powershell -command "Start-Process 'C:\Shades-Toolbox\Files\Shades-ISO-Downloader.bat'"
 chcp 65001 >nul
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :netframework3.5
@@ -547,7 +547,7 @@ Powershell -command "Start-Process 'C:\Toolbox\Files\activator.cmd'"
 chcp 65001 >nul
 pause
 echo Please Wait..
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 
@@ -562,14 +562,14 @@ Reg add "HKCR\Directory\shell\runas" /ve /t REG_SZ /d "Take Ownership" /f
 Reg add "HKCR\Directory\shell\runas" /v "NoWorkingDirectory" /t REG_SZ /d "" /f
 Reg add "HKCR\Directory\shell\runas\command" /ve /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" /r /d y && icacls \"%%1\" /grant administrators:F /t" /f
 Reg add "HKCR\Directory\shell\runas\command" /v "IsolatedCommand" /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" /r /d y && icacls \"%%1\" /grant administrators:F /t" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :compactos
 chcp 437 > NUL 2>&1s
 chcp 65001 >nul
 compact /compactos:always
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 
@@ -577,7 +577,7 @@ goto TweaksMenu
 chcp 437 > NUL 2>&1
 chcp 65001 >nul
 bcdedit /set "{current}" bootmenupolicy legacy
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :oldvolumebar
@@ -621,7 +621,7 @@ Reg.exe add "HKCR\Applications\photoviewer.dll\shell\open\command" /ve /t REG_EX
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\open\DropTarget" /v "Clsid" /t REG_SZ /d "{FFE2A43C-56B9-4bf5-9A79-CC6D4285608A}" /f
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\print\command" /ve /t REG_EXPAND_SZ /d "%%SystemRoot%%\System32\rundll32.exe \"%%ProgramFiles%%\Windows Photo Viewer\PhotoViewer.dll\", ImageView_Fullscreen %%1" /f
 Reg.exe add "HKCR\Applications\photoviewer.dll\shell\print\DropTarget" /v "Clsid" /t REG_SZ /d "{60fd46de-f830-4894-a628-6fa81bc0190d}" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :DisableWindowsFeatures
@@ -681,7 +681,7 @@ echo --- XPS Services feature
 dism /Online /Disable-Feature /FeatureName:"Printing-XPSServices-Features" /NoRestart
 echo --- XPS Viewer feature
 dism /Online /Disable-Feature /FeatureName:"Xps-Foundation-Xps-Viewer" /NoRestart
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :ClearpreviousWindowsinstallations
@@ -696,7 +696,7 @@ if exist "%SystemDrive%\Windows.old" (
 )  else (
     echo No previous Windows installation has been found
 )
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :UnninstallSystemApps
@@ -774,7 +774,7 @@ echo --- Xbox Game Callable UI app (breaks Xbox Live games)
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Microsoft.XboxGameCallableUI'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
 echo --- CBS Preview app
 PowerShell -ExecutionPolicy Unrestricted -Command "$package = Get-AppxPackage -AllUsers 'Windows.CBSPreview'; if (!$package) {; Write-Host 'Not installed'; exit 0; }; $directories = @($package.InstallLocation, "^""$env:LOCALAPPDATA\Packages\$($package.PackageFamilyName)"^""); foreach($dir in $directories) {; if ( !$dir -Or !(Test-Path "^""$dir"^"") ) { continue }; cmd /c ('takeown /f "^""' + $dir + '"^"" /r /d y 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; cmd /c ('icacls "^""' + $dir + '"^"" /grant administrators:F /t 1> nul'); if($LASTEXITCODE) { throw 'Failed to take ownership' }; $files = Get-ChildItem -File -Path $dir -Recurse -Force; foreach($file in $files) {; if($file.Name.EndsWith('.OLD')) { continue }; $newName =  $file.FullName + '.OLD'; Write-Host "^""Rename '$($file.FullName)' to '$newName'"^""; Move-Item -LiteralPath "^""$($file.FullName)"^"" -Destination "^""$newName"^"" -Force; }; }"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenuak
 
 :UninstallinstalledWindowsapps
@@ -814,7 +814,7 @@ echo --- Code Writer app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'ActiproSoftwareLLC.562882FEEB491' | Remove-AppxPackage"
 echo --- Spotify app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'SpotifyAB.SpotifyMusic' | Remove-AppxPackage"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 
@@ -930,7 +930,7 @@ echo --- Communications - Phone app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.CommsPhone' | Remove-AppxPackage"
 echo --- Your Phone app
 PowerShell -ExecutionPolicy Unrestricted -Command "Get-AppxPackage 'Microsoft.YourPhone' | Remove-AppxPackage"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :DisableTelemetry
@@ -989,7 +989,7 @@ echo --- Disable Microsoft Compatibility Appraiser task
 schtasks /change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /disable
 echo --- Disable CompatTelRunner.exe (Microsoft Compatibility Appraiser) process
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\'CompatTelRunner.exe'" /v "Debugger" /t REG_SZ /d "%windir%\System32\taskkill.exe" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 
@@ -1019,7 +1019,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v FailureActions 
 reg add "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 erase /f /s /q c:\windows\softwaredistribution\*.* && rmdir /s /q c:\windows\softwaredistribution
 powershell -command "Get-ScheduledTask -TaskPath '\Microsoft\Windows\UpdateOrchestrator\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\UpdateAssistant\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\WaaSMedic\' | Disable-ScheduledTask; Get-ScheduledTask -TaskPath '\Microsoft\Windows\WindowsUpdate\' | Disable-ScheduledTask"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 echo Succesfully..
 goto TweaksMenu
 
@@ -1056,7 +1056,7 @@ reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SmartScreen" /v "Conf
 echo --- Turn off SmartScreen to check web content (URLs) that apps use
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 
@@ -1090,7 +1090,7 @@ Reg add "HKEY_USERS\.DEFAULT\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ
 Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "MouseSensitivity" /t REG_SZ /d "10" /f >nul 2>&1
 Reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseYCurve" /t REG_BINARY /d 
 Reg.exe add "HKU\.DEFAULT\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "100" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :CO
@@ -1108,7 +1108,7 @@ Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMin" /t REG_DWORD /d "0" /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :wget
@@ -1209,7 +1209,7 @@ for /f %%i in ('Reg query "%%a" /v "PowerSavingMode" ^| findstr "HKEY"') do (Reg
 for /f %%i in ('Reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (Reg add "%%i" /v "S5WakeOnLan" /t Reg_SZ /d "0" /f)
 for /f %%i in ('Reg query "%%a" /v "AutoDisableGigabit" ^| findstr "HKEY"') do (Reg add "%%i" /v "AutoDisableGigabit" /t Reg_SZ /d "0" /f)
 )
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :J
@@ -1270,7 +1270,7 @@ wmic process where ProcessId=%pid% CALL setpriority "realtime"
 sc start vds
 for /f "tokens=3" %%a in ('sc queryex "vds" ^| findstr "PID"') do (set pid=%%a)
 wmic process where ProcessId=%pid% CALL setpriority "realtime"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :A
@@ -1386,7 +1386,7 @@ echo --- Windows Update Events Logs
 del /f /q "%SystemRoot%\Logs\SIH\*"
 echo --- Windows Update Logs
 del /f /q "%SystemRoot%\Traces\WindowsUpdate\*"
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :B
@@ -2729,7 +2729,7 @@ dism /Online /Disable-Feature /FeatureName:"Printing-XPSServices-Features" /NoRe
 
 echo --- XPS Viewer feature
 dism /Online /Disable-Feature /FeatureName:"Xps-Foundation-Xps-Viewer" /NoRestart
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :C
@@ -4041,7 +4041,7 @@ ipconfig /all
 ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :I
@@ -4061,7 +4061,7 @@ echo --- Do not include drivers with Windows Updates
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ExcludeWUDriversInQualityUpdate" /t REG_DWORD /d 1 /f
 echo --- Prevent Windows Update for device driver search
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v "SearchOrderConfig" /t REG_DWORD /d 0 /f
-timeout /t 2 >nulss
+timeout /t 2 >nul
 goto TweaksMenu
 
 :Finish
