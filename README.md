@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Shades Toolbox
 
 <center>
