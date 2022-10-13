@@ -1,17 +1,4 @@
 <p align="center">
-  <img alt="Version" Image="https://img.shields.io/badge/Version-1.0-blue" />
-  <a href="#" target="_blank">
-    <img alt="License: Apache-2.0" Image="https://img.shields.io/github/license/berkays0733/Shades-Toolbox" />
-  </a>
-  <a><img alt="Downloads:" Image="https://img.shields.io/badge/Downloads-1-blue" />
-  </a>
-  <a><img alt="Is Mantained?" Image="https://img.shields.io/badge/Mantained:-yes-green.svg" />
-  </a>
-</p>
-<h1 align="center">
-Shades Toolbox
-</h1>
-<p align="center">
  <img Image="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png?raw=true" width="200">
 </p>
 
