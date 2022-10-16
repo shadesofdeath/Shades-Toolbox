@@ -1,8 +1,8 @@
+<center>
 ## Shades Toolbox
 
-<center>
+
 <img src="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png" width="200px">
-</center>
 
 ### ⚠️ About 
 
@@ -18,59 +18,50 @@ This app works on both Windows 10 and 11. The other has not been tested on opera
 
 ## ✨ Features
 #### Windows Cleaning
-- RemoveLogs and Caches
-- Full Debalot
-- Remove OneDrive
-- Remove Microsoft Edge
-- Remove Taskbar MeetNow Logo
+ RemoveLogs and Caches
+ Full Debalot
+ Remove OneDrive
+ Remove Microsoft Edge
+ Remove Taskbar MeetNow Logo
 #### Windows Tweaks
-- Disable Windows Defender
-- Stop Windows Updates until 2099
-- Enable Old Photo Viewer
-- Disable Windows Driver Updates
-- Ram Optimization
-- CPU Optimization
-- Mouse/Keyboard Optimization
+ Disable Windows Defender
+ Stop Windows Updates until 2099
+ Enable Old Photo Viewer
+ Disable Windows Driver Updates
+ Ram Optimization
+ CPU Optimization
+ Mouse/Keyboard Optimization
 #### Bloatware
-- Uninstall provisioned Windows apps
-- Uninstall installed Windows apps
-- Unninstall System Apps
-- Clear previous Windows installations
-- Remove Windows Features
+ Uninstall provisioned Windows apps
+ Uninstall installed Windows apps
+ Unninstall System Apps
+ Clear previous Windows installations
+ Remove Windows Features
 #### Other
-- Disable SmartScreen
-- Run Disk Defrag
-- Disable Windows Update
-- Disable Telemetry Services
-- Enable Old Volume Bar
-- Enable Legacy Boot Menu
-- Run CompactOS
-- Add Context Menu Take Ownership
-- Shades Windows Activator
-- Paging File (Virtual Memory)
-- Windows ISO Downloader
+ Disable SmartScreen
+ Run Disk Defrag
+ Disable Windows Update
+ Disable Telemetry Services
+ Enable Old Volume Bar
+ Enable Legacy Boot Menu
+ Run CompactOS
+ Add Context Menu Take Ownership
+ Shades Windows Activator
+ Paging File (Virtual Memory)
+ Windows ISO Downloader
 #### Windows 11 Tweaks
-- Disable SmartScreen
-- Run Disk Defrag
-- Disable Windows Update
-- Disable Telemetry Services
-- Enable Old Volume Bar
-- Enable Legacy Boot Menu
-- Run CompactOS
-- Add Context Menu Take Ownership
-- Shades Windows Activator
-- Paging File (Virtual Memory)
+ Disable SmartScreen
+ Run Disk Defrag
+ Disable Windows Update
+ Disable Telemetry Services
+ Enable Old Volume Bar
+ Enable Legacy Boot Menu
+ Run CompactOS
+ Add Context Menu Take Ownership
+ Shades Windows Activator
+ Paging File (Virtual Memory)
 
-#### Downloads
-- Allows you to install one of the applications from the list.
-
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/1.png)
-
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/2.png)
-
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/3.png)
-
-![](https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/4.png)
+### [Screenshots](http://https://github.com/shadesofdeath/Shades-Toolbox/tree/main/Image "Screenshots")
 
 ### 🤝 Contributing
 
