@@ -7,9 +7,9 @@ cls
 chcp 65001 > NUL
 cd /d "%~dp0"
 for /f %%a in ('"cd"') do set Location=%%a
-if C:\Shades-Toolbox NEQ %Location% (echo %R%[31m Move Shades-Toolbox Folder to Local Disk C !%R%[0m
+if C:\Shades-Toolbox NEQ %Location% (echo Move Shades-Toolbox Folder to Local Disk C !
 									 echo.
-									 echo %R%[32m Shades-Toolbox Closing...
+									 echo Shades-Toolbox Closing...
 									 timeout /t 3 /nobreak > NUL
 									 exit
 )
