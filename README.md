@@ -1,7 +1,7 @@
 # Shades Toolbox
 
 
-<img src="https://github.com/berkays0733/Shades-Toolbox/raw/main/Image/shades.png" width="200px">
+<img src="https://github.com/shadesofdeath/Shades-Toolbox/raw/main/Image/logo.png">
 
 
 
